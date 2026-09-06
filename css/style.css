@@ -1,0 +1,851 @@
+/* =========================================================
+   SIBONGILE SANDY MAHLANGU — 20TH BIRTHDAY WEBSITE
+   Elegant • Responsive • Mobile-first friendly
+   ========================================================= */
+
+/* -------------------------
+   1. GLOBAL VARIABLES
+-------------------------- */
+:root {
+    --green: #173b33;
+    --green-dark: #0e2b25;
+    --green-soft: #315b50;
+    --gold: #c9a96a;
+    --gold-light: #ead5a5;
+    --pink: #dcaeb8;
+    --cream: #f7efe4;
+    --paper: #fffdf8;
+    --text: #26352f;
+    --muted: #68736d;
+    --white: #ffffff;
+    --border: rgba(23, 59, 51, 0.12);
+    --shadow: 0 24px 70px rgba(23, 59, 51, 0.12);
+    --radius: 24px;
+}
+
+/* -------------------------
+   2. RESET / BASE
+-------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+}
+
+img,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.85;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.05;
+}
+
+/* -------------------------
+   3. REUSABLE TYPOGRAPHY
+-------------------------- */
+.eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+.heart {
+    color: var(--pink);
+}
+
+.gold-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: var(--gold);
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gold-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(201, 169, 106, 0.30);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* -------------------------
+   4. HEADER / NAVIGATION
+-------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    color: var(--white);
+    background: rgba(13, 43, 37, 0.62);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.light-header {
+    position: sticky;
+    color: var(--green);
+    background: rgba(255, 253, 248, 0.92);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.main-nav a {
+    position: relative;
+    padding: 8px 0;
+    font-size: 13px;
+    opacity: 0.72;
+    transition: opacity 0.25s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: right 0.25s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    opacity: 1;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    right: 0;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 26px;
+}
+
+/* -------------------------
+   5. COUNTDOWN PAGE
+-------------------------- */
+.countdown-page {
+    min-height: 100vh;
+    background: var(--green-dark);
+    color: var(--white);
+}
+
+.background-collage {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+}
+
+.background-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(115deg, rgba(7, 34, 29, 0.94), rgba(20, 62, 53, 0.64), rgba(7, 34, 29, 0.91));
+}
+
+.hero-section {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 110px 6% 60px;
+    text-align: center;
+}
+
+.hero-content {
+    width: min(1100px, 100%);
+}
+
+.hero-content h1 {
+    margin: 22px 0 18px;
+    color: var(--white);
+    font-size: clamp(3rem, 8vw, 7rem);
+    letter-spacing: -0.04em;
+}
+
+.hero-intro {
+    max-width: 650px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 18px;
+}
+
+.countdown-timer {
+    width: min(650px, 100%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 38px auto 22px;
+}
+
+.time-box {
+    padding: 22px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+}
+
+.time-box strong {
+    display: block;
+    color: var(--white);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+}
+
+.time-box span {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.countdown-date {
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.20em;
+}
+
+.celebration {
+    display: none;
+    margin-top: 40px;
+    animation: rise 0.9s ease both;
+}
+
+.celebration.show {
+    display: block;
+}
+
+.celebration h2 {
+    margin: 18px 0;
+    color: var(--white);
+    font-size: clamp(2.2rem, 5vw, 5rem);
+}
+
+/* -------------------------
+   6. WISHES PAGE HERO
+-------------------------- */
+.wishes-page {
+    background: var(--paper);
+}
+
+.page-hero {
+    padding: 125px 6% 85px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(201, 169, 106, 0.20), transparent 30%),
+        linear-gradient(135deg, #f8ecdf, #f4e3d7);
+}
+
+.page-hero h1 {
+    max-width: 1000px;
+    margin: 20px auto;
+    color: var(--green);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+}
+
+.page-hero h1 em {
+    color: #9d6877;
+    font-style: normal;
+}
+
+.page-hero p {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* -------------------------
+   7. LETTER
+-------------------------- */
+.letter-section {
+    padding: 90px 6%;
+    background: var(--paper);
+}
+
+.letter-card {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding: clamp(45px, 8vw, 90px);
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.letter-card h2 {
+    margin: 20px 0 28px;
+    color: var(--green);
+    font-size: clamp(2.7rem, 5vw, 5rem);
+}
+
+.letter-card p + p {
+    margin-top: 18px;
+}
+
+.signature {
+    display: block;
+    margin-top: 30px;
+    color: var(--green);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* -------------------------
+   8. WISH CARDS
+-------------------------- */
+.cream-section {
+    padding: 110px 6%;
+    background: var(--cream);
+}
+
+.section-heading {
+    width: min(850px, 100%);
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 18px 0;
+    color: var(--green);
+    font-size: clamp(2.7rem, 5vw, 5rem);
+}
+
+.wish-grid {
+    width: min(1250px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.wish-card {
+    min-height: 240px;
+    padding: 28px 23px;
+    background: rgba(255, 253, 249, 0.92);
+    border: 1px solid var(--border);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow);
+}
+
+.wish-card > span {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.wish-card h3 {
+    margin: 17px 0 12px;
+    color: var(--green);
+    font-size: 24px;
+}
+
+.wish-card p {
+    font-size: 14px;
+}
+
+/* -------------------------
+   9. GREEN REMINDER SECTION
+-------------------------- */
+.green-section {
+    padding: 120px 7%;
+    color: var(--white);
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(201, 169, 106, 0.18), transparent 32%),
+        var(--green);
+}
+
+.narrow-content {
+    width: min(800px, 100%);
+    margin: 0 auto;
+}
+
+.green-section h2 {
+    margin: 20px 0 25px;
+    color: var(--white);
+    font-size: clamp(2.7rem, 5vw, 5rem);
+}
+
+.green-section p {
+    color: rgba(255, 255, 255, 0.76);
+}
+
+.green-section p + p {
+    margin-top: 16px;
+}
+
+/* -------------------------
+   10. TWO-COLUMN MESSAGE
+-------------------------- */
+.two-column-section {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 8vw;
+    padding: 120px 10%;
+    background: var(--paper);
+}
+
+.two-column-section h2 {
+    margin-top: 20px;
+    color: var(--green);
+    font-size: clamp(2.7rem, 5vw, 5rem);
+}
+
+.two-column-section p + p {
+    margin-top: 18px;
+}
+
+/* -------------------------
+   11. PHOTO GALLERY
+-------------------------- */
+.gallery-section {
+    padding-top: 105px;
+}
+
+.photo-gallery {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-auto-rows: 250px;
+    gap: 18px;
+}
+
+.photo-card {
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: #eadcca;
+    box-shadow: 0 15px 40px rgba(23, 59, 51, 0.10);
+}
+
+.photo-card.photo-large {
+    grid-row: span 2;
+}
+
+.photo-card img {
+    width: 100%;
+    height: calc(100% - 55px);
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+.photo-card figcaption {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    color: var(--muted);
+    background: var(--paper);
+    font-size: 12px;
+}
+
+/* -------------------------
+   12. VIDEO SECTION
+-------------------------- */
+.video-section {
+    padding: 110px 6%;
+    background: var(--paper);
+}
+
+.video-grid {
+    width: min(1150px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.video-card {
+    padding: 10px;
+    border-radius: var(--radius);
+    background: var(--cream);
+    box-shadow: 0 15px 40px rgba(23, 59, 51, 0.08);
+}
+
+.video-card video {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 16px;
+    background: var(--green);
+}
+
+.video-card h3 {
+    padding: 18px 10px 12px;
+    color: var(--green);
+    font-size: 20px;
+}
+
+/* -------------------------
+   13. FINAL MESSAGE
+-------------------------- */
+.final-section {
+    padding: 130px 7%;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, var(--gold), var(--green) 70%);
+}
+
+.final-card {
+    width: min(850px, 100%);
+    margin: 0 auto;
+    padding: clamp(45px, 8vw, 70px);
+    border-radius: 38px;
+    background: rgba(255, 253, 249, 0.95);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.18);
+}
+
+.final-card h2 {
+    margin: 20px 0 28px;
+    color: var(--green);
+    font-size: clamp(2.7rem, 6vw, 5.5rem);
+}
+
+.final-card p + p {
+    margin-top: 18px;
+}
+
+.final-signature {
+    display: block;
+    margin: 35px 0;
+    color: var(--green);
+    line-height: 1.8;
+    letter-spacing: 0.10em;
+}
+
+.dark-button {
+    margin-top: 12px;
+    background: var(--green);
+    color: var(--white);
+}
+
+/* -------------------------
+   14. FLOATING PARTICLES
+-------------------------- */
+.particle {
+    position: fixed;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    z-index: -1;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    animation: float-up 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float-up {
+    from {
+        transform: translateY(105vh);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------------
+   15. TABLET RESPONSIVENESS
+-------------------------- */
+@media (max-width: 1000px) {
+
+    .wish-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .two-column-section {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* -------------------------
+   16. MOBILE NAVIGATION
+-------------------------- */
+@media (max-width: 700px) {
+
+    .site-header {
+        min-height: 65px;
+        padding: 0 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 6%;
+        background: rgba(14, 43, 37, 0.97);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .light-header .main-nav {
+        background: rgba(255, 253, 248, 0.98);
+    }
+
+    .main-nav.open {
+        transform: translateY(0);
+    }
+
+    .main-nav a {
+        padding: 15px 0;
+    }
+
+    .background-collage {
+        grid-template-columns: 1fr;
+    }
+
+    .background-collage img {
+        display: none;
+    }
+
+    .background-collage img:first-child {
+        display: block;
+    }
+
+    .hero-section {
+        padding: 105px 5% 45px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.8rem, 14vw, 5rem);
+    }
+
+    .hero-intro {
+        font-size: 16px;
+    }
+
+    .countdown-timer {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 360px;
+    }
+
+    .time-box {
+        padding: 20px 10px;
+    }
+
+    .time-box strong {
+        font-size: 42px;
+    }
+
+    .page-hero {
+        padding: 120px 5% 70px;
+    }
+
+    .page-hero h1 {
+        font-size: clamp(2.8rem, 13vw, 5rem);
+    }
+
+    .letter-section,
+    .cream-section,
+    .green-section,
+    .video-section,
+    .two-column-section {
+        padding: 80px 5%;
+    }
+
+    .letter-card {
+        padding: 48px 7%;
+    }
+
+    .wish-grid,
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wish-card {
+        min-height: auto;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 280px;
+    }
+
+    .photo-card.photo-large {
+        grid-row: auto;
+    }
+
+    .final-section {
+        padding: 85px 5%;
+    }
+
+    .final-card {
+        border-radius: 25px;
+        padding: 45px 7%;
+    }
+}
+
+/* -------------------------
+   17. SMALL PHONE TUNING
+-------------------------- */
+@media (max-width: 420px) {
+
+    .countdown-timer {
+        gap: 10px;
+    }
+
+    .time-box strong {
+        font-size: 35px;
+    }
+
+    .time-box span {
+        font-size: 9px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 0.17em;
+    }
+
+    .gold-button {
+        width: 100%;
+    }
+}
+
+/* -------------------------
+   18. REDUCED MOTION ACCESSIBILITY
+-------------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
