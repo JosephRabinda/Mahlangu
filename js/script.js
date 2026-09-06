@@ -120,15 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // If this year's birthday has already passed,
         // count down to next year's birthday.
-        if (now > birthday) {
-            birthday = new Date(
-                now.getFullYear() + 1,
-                9,
-                10,
-                0,
-                0,
-                0
-            );
+       let birthday = new Date(
+    now.getFullYear(),
+    9,  // October = month 9 because JavaScript starts at 0
+    5,  // 5 October
+    0,
+    0,
+    0
+      );
         }
 
         function updateCountdown() {
