@@ -83,99 +83,133 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* -------------------------
-       4. BIRTHDAY COUNTDOWN
-    -------------------------- */
+document.addEventListener("DOMContentLoaded", function () {
 
-    const daysElement = document.getElementById("days");
-    const hoursElement = document.getElementById("hours");
-    const minutesElement = document.getElementById("minutes");
-    const secondsElement = document.getElementById("seconds");
-    const celebration = document.getElementById("celebrate");
+    const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const seconds = document.getElementById("seconds");
 
-    if (
-        daysElement &&
-        hoursElement &&
-        minutesElement &&
-        secondsElement
-    ) {
+    const countdown = document.getElementById("countdown");
+    const birthdayMessage = document.getElementById("birthdayMessage");
+
+
+    /*
+    ==========================================
+    BIRTHDAY DATE
+    ==========================================
+
+    The birthday is TODAY.
+
+    00:00:00 means midnight.
+
+    South Africa = UTC+02:00
+    */
+
+    const birthdayDate =
+        new Date("2026-10-05T00:00:00+02:00").getTime();
+
+
+    let countdownTimer;
+
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+
+        const difference = birthdayDate - now;
+
+
         /*
-         * Birthday date:
-         * 10 October
-         *
-         * The script automatically uses the next
-         * 10 October relative to the visitor's date.
-         */
+        ==========================================
+        COUNTDOWN HAS REACHED ZERO
+        ==========================================
+        */
 
-        const now = new Date();
+        if (difference <= 0) {
 
-        let birthday = new Date(
-            now.getFullYear(),
-            9,  // October = month 9 because JavaScript starts at 0
-            5,
-            0,
-            0,
-            0
-        );
+            // Set everything to ZERO
+            days.textContent = "00";
+            hours.textContent = "00";
+            minutes.textContent = "00";
+            seconds.textContent = "00";
 
-        // If this year's birthday has already passed,
-        // count down to next year's birthday.
-        if (now > birthday) {
-            birthday = new Date(
-                now.getFullYear() + 1,
-                9,
-                5,
-                0,
-                0,
-                0
-            );
+
+            // STOP THE COUNTDOWN
+            clearInterval(countdownTimer);
+
+
+            // Show birthday message IMMEDIATELY
+            birthdayMessage.classList.add("show");
+
+
+            return;
         }
 
-        function updateCountdown() {
 
-            const currentTime = new Date();
-            const difference = birthday - currentTime;
+        /*
+        ==========================================
+        CALCULATE REMAINING TIME
+        ==========================================
+        */
 
-            // Birthday has arrived.
-            if (difference <= 0) {
-                daysElement.textContent = "00";
-                hoursElement.textContent = "00";
-                minutesElement.textContent = "00";
-                secondsElement.textContent = "00";
-
-                if (celebration) {
-                    celebration.classList.add("show");
-                }
-
-                return;
-            }
-
-            const days = Math.floor(
+        const remainingDays =
+            Math.floor(
                 difference / (1000 * 60 * 60 * 24)
             );
 
-            const hours = Math.floor(
-                difference / (1000 * 60 * 60)
-            ) % 24;
 
-            const minutes = Math.floor(
-                difference / (1000 * 60)
-            ) % 60;
+        const remainingHours =
+            Math.floor(
+                (difference / (1000 * 60 * 60)) % 24
+            );
 
-            const seconds = Math.floor(
-                difference / 1000
-            ) % 60;
 
-            daysElement.textContent = String(days).padStart(2, "0");
-            hoursElement.textContent = String(hours).padStart(2, "0");
-            minutesElement.textContent = String(minutes).padStart(2, "0");
-            secondsElement.textContent = String(seconds).padStart(2, "0");
-        }
+        const remainingMinutes =
+            Math.floor(
+                (difference / (1000 * 60)) % 60
+            );
 
-        // Run immediately so the page never waits one second.
-        updateCountdown();
 
-        // Update every second.
-        setInterval(updateCountdown, 1000);
+        const remainingSeconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        /*
+        ==========================================
+        DISPLAY TIME
+        ==========================================
+        */
+
+        days.textContent =
+            String(remainingDays).padStart(2, "0");
+
+        hours.textContent =
+            String(remainingHours).padStart(2, "0");
+
+        minutes.textContent =
+            String(remainingMinutes).padStart(2, "0");
+
+        seconds.textContent =
+            String(remainingSeconds).padStart(2, "0");
     }
+
+
+    /*
+    ==========================================
+    RUN COUNTDOWN
+    ==========================================
+    */
+
+    updateCountdown();
+
+    countdownTimer = setInterval(
+        updateCountdown,
+        1000
+    );
+
 });
+
+
