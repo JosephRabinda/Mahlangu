@@ -203,12 +203,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ==========================================
     */
 
-    updateCountdown();
+    /*updateCountdown();
 
     countdownTimer = setInterval(
         updateCountdown,
         1000
-    );
+    );*/
 
 });
 
