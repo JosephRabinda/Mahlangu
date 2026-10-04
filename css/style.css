@@ -850,31 +850,35 @@ h3 {
     }
 }
 
- /* =========================================
-    BIRTHDAY HOME / INDEX PAGE
- ========================================= */
+/* =====================================================
+   INDEX / BIRTHDAY HOME PAGE
+   RESPONSIVE FOR ALL SCREEN SIZES
+===================================================== */
 
 .hero {
-    min-height: 100vh;
+    position: relative;
+
     width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
-    overflow: hidden;
-
     text-align: center;
 
-    padding: 40px 20px;
+    padding: clamp(25px, 5vw, 70px);
+
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
 
 
-/* =========================================
-   DARK OVERLAY
-   Helps the text remain visible over images
- ========================================= */
+/* =====================================================
+   BACKGROUND OVERLAY
+===================================================== */
 
 .hero-overlay {
     position: absolute;
@@ -882,142 +886,233 @@ h3 {
 
     background:
         linear-gradient(
-            rgba(10, 35, 25, 0.72),
-            rgba(10, 35, 25, 0.82)
+            135deg,
+            rgba(8, 38, 27, 0.78),
+            rgba(18, 53, 38, 0.70)
         );
 
     z-index: 1;
 }
 
 
-/* =========================================
+/* =====================================================
    MAIN CONTENT
- ========================================= */
+===================================================== */
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     width: 100%;
-    max-width: 850px;
 
-    margin: 0 auto;
+    max-width: 900px;
+
+    margin: auto;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 }
 
 
-/* =========================================
-   SMALL TOP TEXT
- ========================================= */
+/* =====================================================
+   SMALL TITLE
+===================================================== */
 
 .small-title {
     color: #e6c76a;
 
-    font-size: 0.95rem;
+    font-size: clamp(
+        0.7rem,
+        1.2vw,
+        1rem
+    );
+
     font-weight: 600;
 
-    letter-spacing: 4px;
-
-    margin-bottom: 18px;
+    letter-spacing: clamp(
+        2px,
+        0.4vw,
+        5px
+    );
 
     text-transform: uppercase;
+
+    margin: 0 0 clamp(
+        12px,
+        2vw,
+        20px
+    );
+
+    line-height: 1.5;
 }
 
 
-/* =========================================
+/* =====================================================
    MAIN TITLE
- ========================================= */
+===================================================== */
 
 .hero-content h1 {
     color: #fff8e7;
 
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-size: clamp(
+        2.3rem,
+        6vw,
+        5.8rem
+    );
 
     line-height: 1.05;
 
-    letter-spacing: 3px;
+    letter-spacing: clamp(
+        1px,
+        0.35vw,
+        4px
+    );
 
     margin: 0;
 
+    font-weight: 800;
+
     text-shadow:
-        0 3px 15px rgba(0, 0, 0, 0.5);
+        0 4px 20px rgba(0, 0, 0, 0.55);
 }
 
 
-/* =========================================
-   NAME
- ========================================= */
+/* =====================================================
+   SIBONGILE NAME
+===================================================== */
 
 .hero-content h2 {
     color: #e6c76a;
 
-    font-size: clamp(1.3rem, 3vw, 2.2rem);
+    font-size: clamp(
+        1.15rem,
+        3vw,
+        2.4rem
+    );
 
-    letter-spacing: 2px;
+    line-height: 1.3;
 
-    margin: 18px 0 25px;
+    letter-spacing: clamp(
+        0.5px,
+        0.2vw,
+        2px
+    );
 
-    font-weight: 500;
+    margin:
+
+        clamp(12px, 2vw, 22px)
+
+        0
+
+        clamp(18px, 3vw, 30px);
+
+    font-weight: 600;
+
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =====================================================
+   MAIN MESSAGE
+===================================================== */
+
+.home-message {
+    width: 100%;
+
+    max-width: 680px;
+
+    color: #fff8e7;
+
+    font-size: clamp(
+        0.9rem,
+        1.5vw,
+        1.2rem
+    );
+
+    line-height: clamp(
+        1.6,
+        2vw,
+        1.9
+    );
+
+    margin:
+
+        0
+
+        auto
+
+        clamp(10px, 2vw, 18px);
 
     text-shadow:
         0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 
-/* =========================================
-   MESSAGE
- ========================================= */
-
-.home-message {
-    max-width: 680px;
-
-    color: #fff8e7;
-
-    font-size: 1.1rem;
-
-    line-height: 1.8;
-
-    margin: 5px auto 15px;
-
-    text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-
-/* =========================================
-   WELCOME TO 20
- ========================================= */
+/* =====================================================
+   WELCOME MESSAGE
+===================================================== */
 
 .welcome-message {
     color: #e6c76a;
 
-    font-size: 1.35rem;
+    font-size: clamp(
+        1rem,
+        1.8vw,
+        1.4rem
+    );
 
     font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: clamp(
+        0.5px,
+        0.15vw,
+        1.5px
+    );
 
-    margin: 5px 0 25px;
+    margin:
+
+        0
+
+        0
+
+        clamp(20px, 3vw, 32px);
 }
 
 
-/* =========================================
+/* =====================================================
    WISHES BUTTON
- ========================================= */
+===================================================== */
 
 .wishes-button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 16px 32px;
+    width: fit-content;
 
-    min-width: 250px;
+    min-width: clamp(
+        210px,
+        28vw,
+        290px
+    );
+
+    padding:
+
+        clamp(12px, 1.5vw, 17px)
+
+        clamp(20px, 3vw, 34px);
+
+    box-sizing: border-box;
 
     background: #e6c76a;
 
@@ -1025,87 +1120,99 @@ h3 {
 
     text-decoration: none;
 
-    border-radius: 50px;
+    border-radius: 100px;
 
-    font-size: 0.95rem;
+    font-size: clamp(
+        0.75rem,
+        1.2vw,
+        1rem
+    );
 
     font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: clamp(
+        0.5px,
+        0.12vw,
+        1px
+    );
 
     box-shadow:
         0 8px 25px rgba(0, 0, 0, 0.3);
 
     transition:
+
         transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+
+        background 0.3s ease,
+
+        box-shadow 0.3s ease;
 }
 
 
-/* BUTTON HOVER */
+/* =====================================================
+   BUTTON HOVER
+===================================================== */
 
 .wishes-button:hover {
+
     background: #fff8e7;
 
     color: #123526;
 
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 
-/* =========================================
-   MOBILE
- ========================================= */
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 360px) {
 
     .hero {
-        min-height: 100svh;
-
-        padding: 30px 18px;
-    }
-
-    .small-title {
-        font-size: 0.72rem;
-
-        letter-spacing: 2px;
-
-        margin-bottom: 15px;
+        padding: 20px 15px;
     }
 
     .hero-content h1 {
-        font-size: 2.5rem;
-
-        letter-spacing: 1.5px;
+        font-size: 2rem;
     }
 
     .hero-content h2 {
-        font-size: 1.25rem;
-
-        letter-spacing: 1px;
-
-        margin: 15px 0 20px;
+        font-size: 1rem;
     }
 
     .home-message {
-        font-size: 0.95rem;
-
-        line-height: 1.7;
-    }
-
-    .welcome-message {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
     }
 
     .wishes-button {
-        min-width: 220px;
+        min-width: 200px;
+    }
+}
 
-        padding: 14px 22px;
 
-        font-size: 0.82rem;
+/* =====================================================
+   TABLETS
+===================================================== */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .hero-content {
+        max-width: 750px;
+    }
+}
+
+
+/* =====================================================
+   LARGE DESKTOPS
+===================================================== */
+
+@media (min-width: 1600px) {
+
+    .hero-content {
+        max-width: 1050px;
     }
 }
