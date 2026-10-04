@@ -99,13 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         minutesElement &&
         secondsElement
     ) {
-        /*
-         * Birthday date:
-         * 10 October
-         *
-         * The script automatically uses the next
-         * 10 October relative to the visitor's date.
-         */
+
 
         const now = new Date();
 
@@ -171,6 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
             minutesElement.textContent = String(minutes).padStart(2, "0");
             secondsElement.textContent = String(seconds).padStart(2, "0");
         }
+
+       // Run immediately so the page never waits one second.
+        updateCountdown();
+
+        // Update every second.
+        setInterval(updateCountdown, 1000);
+    }
+});
 
        
 
